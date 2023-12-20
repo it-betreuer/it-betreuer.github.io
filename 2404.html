@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <style>
+body {
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+li,td,th {
+    padding: 8px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#id_table tbody {
+    border-top: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    border-bottom: 2px solid;
+    height: 30px;
+    text-align: center;
+}
+
+.search-input {
+  max-width: 50px;
+  border: none;
+  outline: none;
+}
+
+tr.attention {
+  background: lightyellow;
+}
+
+</style>
+</head>
+<body>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".search-input").forEach((inputField) => {
+    const tableRows = inputField
+      .closest("table")
+      .querySelectorAll("tbody > tr");
+    const headerCell = inputField.closest("th");
+    const otherHeaderCells = headerCell.closest("tr").children;
+    const columnIndex = Array.from(otherHeaderCells).indexOf(headerCell);
+    const searchableCells = Array.from(tableRows).map(
+      (row) => row.querySelectorAll("td")[columnIndex]
+    );
+
+    inputField.addEventListener("input", () => {
+      const searchQuery = inputField.value.toLowerCase();
+
+      for (const tableCell of searchableCells) {
+        const row = tableCell.closest("tr");
+        const value = tableCell.textContent.toLowerCase().replace(",", "");
+
+        row.style.visibility = null;
+
+        if (value.search(searchQuery) === -1) {
+          row.style.visibility = "collapse";
+        }
+      }
+    });
+  });
+});
+</script>
+
+<a href="index.html" class="index">&lt;&lt;</a>
+
+<h1 id="title">IT-Systembetreuer 2024, April</h1>
+
+<table class="table" id="id_table">
+
+<thead>
+  <tr>
+    <th><input type="text" class="search-input" placeholder="Datum"></th>
+    <th><input type="text" class="search-input" placeholder="Tag"></th>
+    <th><input type="text" class="search-input" placeholder="Ort"></th>
+    <th><input type="text" class="search-input" placeholder="von"></th>
+    <th><input type="text" class="search-input" placeholder="bis"></th>
+    <th><input type="text" class="search-input" placeholder="Notiz"></th>
+  </tr>
+</thead>
+
+<tbody>
+<tr class="common">
+  <td>1</td>
+  <td>Mo</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>1</td>
+  <td>Mo</td>
+  <td>F</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>2</td>
+  <td>Di</td>
+  <td>P</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>2</td>
+  <td>Di</td>
+  <td>M</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>3</td>
+  <td>Mi</td>
+  <td>F</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>3</td>
+  <td>Mi</td>
+  <td>A</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>4</td>
+  <td>Do</td>
+  <td>M</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>4</td>
+  <td>Do</td>
+  <td>P</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>5</td>
+  <td>Fr</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>8</td>
+  <td>Mo</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>8</td>
+  <td>Mo</td>
+  <td>F</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>9</td>
+  <td>Di</td>
+  <td>P</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>9</td>
+  <td>Di</td>
+  <td>M</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>10</td>
+  <td>Mi</td>
+  <td>F</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>10</td>
+  <td>Mi</td>
+  <td>A</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>11</td>
+  <td>Do</td>
+  <td>M</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>11</td>
+  <td>Do</td>
+  <td>P</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>12</td>
+  <td>Fr</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>15</td>
+  <td>Mo</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>15</td>
+  <td>Mo</td>
+  <td>F</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>16</td>
+  <td>Di</td>
+  <td>P</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>16</td>
+  <td>Di</td>
+  <td>M</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>17</td>
+  <td>Mi</td>
+  <td>F</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>17</td>
+  <td>Mi</td>
+  <td>A</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>18</td>
+  <td>Do</td>
+  <td>M</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>18</td>
+  <td>Do</td>
+  <td>P</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>19</td>
+  <td>Fr</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>22</td>
+  <td>Mo</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>22</td>
+  <td>Mo</td>
+  <td>F</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>23</td>
+  <td>Di</td>
+  <td>P</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>23</td>
+  <td>Di</td>
+  <td>M</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>24</td>
+  <td>Mi</td>
+  <td>F</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>24</td>
+  <td>Mi</td>
+  <td>A</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>25</td>
+  <td>Do</td>
+  <td>M</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>25</td>
+  <td>Do</td>
+  <td>P</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>26</td>
+  <td>Fr</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>29</td>
+  <td>Mo</td>
+  <td>A</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>29</td>
+  <td>Mo</td>
+  <td>F</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+
+<tbody>
+<tr class="common">
+  <td>30</td>
+  <td>Di</td>
+  <td>P</td>
+  <td>9:00</td>
+  <td>11:00</td>
+  <td></td>
+</tr>
+<tr class="common">
+  <td>30</td>
+  <td>Di</td>
+  <td>M</td>
+  <td>11:30</td>
+  <td>17:00</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>
